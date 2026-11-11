@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Site.Title }}</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
+          colors: {
+            brandRed: '#ff2511',
+            brandDark: '#0b0607',
+            brandSection: '#16090b',
+            brandCard: '#220e10',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0b0607;
+      color: #ffffff;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 37, 17, 0.14) 0%, transparent 35%),
+        radial-gradient(circle at 85% 25%, rgba(255, 37, 17, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at 50% 75%, rgba(255, 37, 17, 0.08) 0%, transparent 45%);
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background-color: #ffffff;
+      margin-left: 6px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  </style>
+</head>
+<body class="antialiased selection:bg-brandRed selection:text-white">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="sticky top-0 z-50 bg-brandDark/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#" class="text-2xl font-extrabold tracking-tight">
+        Port<span class="text-brandRed">folio.</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+        <a href="#home" class="text-white hover:text-brandRed transition">Home</a>
+        <a href="#about" class="hover:text-brandRed transition">About</a>
+        <a href="#services" class="hover:text-brandRed transition">Services</a>
+        <a href="#portfolio" class="hover:text-brandRed transition">Portfolio</a>
+        <a href="#contact" class="hover:text-brandRed transition">Contact</a>
+      </nav>
+      <a href="{{ .Site.Params.cv_url }}" download class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-brandRed/30 flex items-center gap-2 transition">
+        <i class="fa-solid fa-download"></i> Download CV
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="home" class="relative pt-14 pb-24 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column -->
+      <div class="lg:col-span-7 space-y-5">
+        <h1 class="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight leading-none">
+          {{ .Site.Params.headline_prefix }}
+        </h1>
+        <div class="text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-brandRed min-h-[1.2em] flex items-center">
+          <span id="typewriter"></span><span class="typing-cursor"></span>
+        </div>
+        <p class="text-gray-300 text-sm sm:text-base max-w-lg leading-relaxed pt-2">
+          {{ .Site.Params.subtitle }}
+        </p>
+        <div class="pt-4 flex flex-wrap items-center gap-5">
+          <a href="#contact" class="bg-brandRed hover:bg-red-600 text-white text-sm font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-brandRed/30 transition">
+            Start Consulting
+          </a>
+          <div class="flex items-center gap-2 text-xs text-gray-300">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+            {{ .Site.Params.freelance }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (Portrait + Floating White Cards) -->
+      <div class="lg:col-span-5 relative flex justify-center">
+        <!-- Main Portrait Container -->
+        <div class="relative w-72 sm:w-80 h-96 rounded-2xl overflow-visible flex items-end justify-center">
+        <img src="{{ .Site.Params.profile_image | relURL }}" alt="{{ .Site.Params.name }}" 
+        class="w-full h-full object-cover rounded-2xl border border-white/10 shadow-2xl">
+          
+          <!-- Top Right Floating Badge -->
+          <div class="absolute -top-5 -right-4 bg-white text-gray-900 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-brandRed/10 text-brandRed flex items-center justify-center font-bold">
+              <i class="fa-solid fa-award text-lg"></i>
+            </div>
+            <div class="text-left leading-tight">
+              <p class="text-xs font-bold">{{ .Site.Params.badge_top_title }}</p>
+              <p class="text-[10px] text-gray-500">{{ .Site.Params.badge_top_sub }}</p>
+            </div>
+          </div>
+
+          <!-- Bottom Left Floating Stat Card -->
+          <div class="absolute bottom-6 -left-8 bg-white text-gray-900 p-4 rounded-2xl shadow-xl w-32 text-center">
+            <div class="w-7 h-7 mx-auto mb-1 rounded-full bg-brandRed/10 text-brandRed flex items-center justify-center">
+              <i class="fa-regular fa-face-smile"></i>
+            </div>
+            <p class="text-2xl font-extrabold text-gray-900">{{ .Site.Params.badge_bottom_num }}</p>
+            <p class="text-[10px] text-gray-500 leading-tight mt-0.5">{{ .Site.Params.badge_bottom_sub }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= WHO AM I / ABOUT SECTION ================= -->
+  <section id="about" class="py-24 bg-brandSection/90 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left 2x2 Bento Grid -->
+      <div class="lg:col-span-6 grid grid-cols-2 gap-5 max-w-md mx-auto w-full">
+        <!-- Top-Left Image -->
+        <div class="aspect-square rounded-2xl overflow-hidden bg-brandCard border border-white/5">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80" alt="Team Operations" class="w-full h-full object-cover">
+        </div>
+        <!-- Top-Right Stat Card -->
+        <div class="aspect-square rounded-2xl bg-brandCard border border-white/5 flex flex-col items-center justify-center p-6 text-center">
+          <span class="text-4xl sm:text-5xl font-extrabold text-white">{{ .Site.Params.stat1_num }}</span>
+          <span class="text-[11px] font-semibold tracking-wider text-brandRed uppercase mt-2">{{ .Site.Params.stat1_label }}</span>
+        </div>
+        <!-- Bottom-Left Stat Card -->
+        <div class="aspect-square rounded-2xl bg-brandCard border border-white/5 flex flex-col items-center justify-center p-6 text-center">
+          <span class="text-4xl sm:text-5xl font-extrabold text-white">{{ .Site.Params.stat2_num }}</span>
+          <span class="text-[11px] font-semibold tracking-wider text-brandRed uppercase mt-2">{{ .Site.Params.stat2_label }}</span>
+        </div>
+        <!-- Bottom-Right Image -->
+        <div class="aspect-square rounded-2xl overflow-hidden bg-brandCard border border-white/5">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Data Analytics" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <!-- Right Column Bio & Details -->
+      <div class="lg:col-span-6 space-y-5">
+        <p class="text-xs font-bold uppercase tracking-widest text-brandRed">About Me</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight">WHO AM I ?</h2>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          {{ .Site.Params.about_bio }}
+        </p>
+
+        <!-- Red Dot List -->
+        <ul class="space-y-2.5 text-sm pt-2">
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Name :</span>
+            <span class="text-gray-300">{{ .Site.Params.name }}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Address :</span>
+            <span class="text-gray-300">{{ .Site.Params.address }}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Zip code :</span>
+            <span class="text-gray-300">{{ .Site.Params.zipcode }}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Email :</span>
+            <span class="text-gray-300">{{ .Site.Params.email }}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Phone :</span>
+            <span class="text-gray-300">{{ .Site.Params.phone }}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Language :</span>
+            <span class="text-gray-300">{{ .Site.Params.languages }}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-brandRed"></span>
+            <span class="font-semibold text-white w-28">Freelance :</span>
+            <span class="text-gray-300">{{ .Site.Params.freelance }}</span>
+          </li>
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="pt-4 flex items-center gap-3">
+          <a href="{{ .Site.Params.cv_url }}" download class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-6 py-3 rounded-full shadow-lg shadow-brandRed/30 flex items-center gap-2 transition">
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
+          <a href="#contact" class="w-10 h-10 rounded-full bg-brandRed hover:bg-red-600 text-white flex items-center justify-center shadow-lg shadow-brandRed/30 transition" title="Contact Me">
+            <i class="fa-regular fa-paper-plane text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SERVICES SECTION ================= -->
+  <section id="services" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brandRed mb-2">Our Services</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight">THE EASE-SERVICE PROCESS</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="#contact" class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition">
+            VIEW ALL SERVICES
+          </a>
+          <a href="#contact" class="w-9 h-9 rounded-full bg-brandRed hover:bg-red-600 text-white flex items-center justify-center text-xs transition">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6-Card Grid with Overlapping Top Icons -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 pt-4">
+        {{ range .Site.Params.services }}
+        <div class="relative bg-brandCard border border-white/5 rounded-2xl p-8 pt-12 text-center hover:border-brandRed/40 transition group">
+          <!-- Floating White Circle Icon -->
+          <div class="w-12 h-12 rounded-full bg-white text-brandRed flex items-center justify-center text-lg shadow-lg absolute -top-6 left-1/2 -translate-x-1/2 group-hover:bg-brandRed group-hover:text-white transition">
+            <i class="fa-solid {{ .icon }}"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-3">{{ .title }}</h3>
+          <p class="text-xs text-gray-300 leading-relaxed mb-6">
+            {{ .description }}
+          </p>
+          <a href="{{ .link }}" class="inline-block bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-6 py-2.5 rounded-full shadow-md shadow-brandRed/20 transition">
+            View Services
+          </a>
+        </div>
+        {{ end }}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CASE STUDIES / PORTFOLIO HIGHLIGHT ================= -->
+  <section id="portfolio" class="py-20 bg-brandSection/80 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <p class="text-xs font-bold uppercase tracking-widest text-brandRed mb-2">Proven Track Record</p>
+        <h2 class="text-3xl font-extrabold uppercase">OPERATIONAL CASE STUDIES</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-brandCard p-8 rounded-2xl border border-white/5">
+          <span class="text-xs font-bold text-brandRed uppercase">YKKY General Merchandise (2023 – Present)</span>
+          <h3 class="text-xl font-bold mt-2 mb-3">Centralized Stock-Keeping & Pricing Database</h3>
+          <p class="text-xs text-gray-300 leading-relaxed">
+            Built a master inventory and price-list database from scratch in Google Sheets/Excel, eliminating fragmented records, preventing pricing errors, and accelerating quote turnaround times for clients and suppliers.
+          </p>
+        </div>
+        <div class="bg-brandCard p-8 rounded-2xl border border-white/5">
+          <span class="text-xs font-bold text-brandRed uppercase">PLGU Catanduanes – Information Unit</span>
+          <h3 class="text-xl font-bold mt-2 mb-3">Multi-Channel Inquiry & Social Media Management</h3>
+          <p class="text-xs text-gray-300 leading-relaxed">
+            Managed official public communications, high-volume project data entry, and cross-departmental event coordination while fielding daily inquiries via calls, SMS, and online chats.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <section id="contact" class="py-20 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-brandRed mb-2">Ready to Streamline Your Operations?</p>
+      <h2 class="text-3xl font-extrabold uppercase mb-4">LET'S WORK TOGETHER</h2>
+      <p class="text-sm text-gray-300 mb-8">Send a direct message or reach out via email or WhatsApp to book an intro call.</p>
+
+      <form action="https://api.web3forms.com/submit" method="POST" class="max-w-xl mx-auto space-y-4 text-left">
+        <!-- Replace YOUR_ACCESS_KEY_HERE with a free key from https://web3forms.com -->
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input type="text" name="name" placeholder="Your Name" required class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed">
+          <input type="email" name="email" placeholder="Your Email" required class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed">
+        </div>
+        <textarea name="message" rows="4" placeholder="How can I help your business?" required class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed"></textarea>
+        <button type="submit" class="w-full bg-brandRed hover:bg-red-600 text-white font-semibold py-3.5 rounded-full shadow-lg shadow-brandRed/30 transition text-sm">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-xs text-gray-500 border-t border-white/5">
+    © {{ now.Year }} {{ .Site.Params.name }}. Built with Hugo.
+  </footer>
+
+  <!-- Typewriter Script for Hero Role Animation -->
+  <script>
+    const roles = {{ .Site.Params.typing_roles | jsonify | safeJS }};
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typeTarget = document.getElementById('typewriter');
+
+    function typeLoop() {
+      const currentRole = roles[roleIndex];
+      typeTarget.textContent = currentRole.substring(0, charIndex);
+
+      if (!isDeleting && charIndex < currentRole.length) {
+        charIndex++;
+        setTimeout(typeLoop, 110);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeLoop, 60);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeLoop, isDeleting ? 1600 : 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', typeLoop);
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Garry Michael Sarmiento | Virtual Assistant Portfolio"
+
+[params]
+  name = "Garry Michael Sarmiento"
+  headline_prefix = "HELLO I AM"
+  typing_roles = ["EXECUTIVE VA", "OPERATIONS PRO", "DATA SPECIALIST", "TECH & AI VA"]
+  subtitle = "Administrative & Operations Professional, Database Builder, Multi-Channel Coordinator, and AI Workflow Specialist"
+  cv_url = "/files/sarmiento_resume.pdf"
+  profile_image = "/images/thisphoto.jpg"
+  
+  # Hero Floating Badges
+  badge_top_title = "Google AI"
+  badge_top_sub = "Certified Pro"
+  badge_bottom_num = "3+ Yrs"
+  badge_bottom_sub = "Operations & VA Experience"
+
+  # About Section ("WHO AM I ?")
+  about_bio = "I'm Garry Michael Sarmiento, a proactive and detail-oriented Administrative & Operations Professional with an Electronics Engineering background from UP Diliman. I specialize in streamlining workflows, building organized inventory and pricing databases, managing calendars, and handling multi-channel communications so founders and teams can focus on growth."
+  dob = "Available upon request"
+  address = "Mayamot, Antipolo City, Philippines"
+  zipcode = "1870"
+  email = "babasarmiento3@gmail.com"
+  phone = "+63 939 882 4470"
+  languages = "English, Filipino, Bikol"
+  freelance = "Available (Full-Time / Remote)"
+
+  # 2x2 Grid Stats
+  stat1_num = "3+"
+  stat1_label = "YEARS EXPERIENCE"
+  stat2_num = "100%"
+  stat2_label = "DATA ACCURACY & QA"
+
+  # Services Section ("THE EASE-SERVICE PROCESS")
+  [[params.services]]
+    icon = "fa-calendar-check"
+    title = "Executive & Admin Support"
+    description = "Calendar and schedule gatekeeping, inbox management, meeting minutes documentation, and systematic action-item follow-ups."
+    link = "#contact"
+
+  [[params.services]]
+    icon = "fa-database"
+    title = "Data & Inventory Databases"
+    description = "Custom Google Sheets and Excel stock-keeping databases, price-list tracking, CSV lead preparation, and row-by-row QA."
+    link = "#contact"
+
+  [[params.services]]
+    icon = "fa-headset"
+    title = "Multi-Channel Client Support"
+    description = "Responsive customer and stakeholder communication across email, live chat, WhatsApp, SMS, and social media inboxes."
+    link = "#contact"
+
+  [[params.services]]
+    icon = "fa-tags"
+    title = "E-Commerce & Product Listing"
+    description = "Creating polished marketplace and store listings with accurate technical specs, photo cleanup, and real-time stock syncing."
+    link = "#contact"
+
+  [[params.services]]
+    icon = "fa-robot"
+    title = "AI & Workflow Optimization"
+    description = "Certified in Google AI Essentials—leveraging ChatGPT, Google AI, and spreadsheet logic to speed up drafting and eliminate bottlenecks."
+    link = "#contact"
+
+  [[params.services]]
+    icon = "fa-bullhorn"
+    title = "Social Media & Canva Design"
+    description = "Page management, engagement strategies, caption copywriting, event promotion, and clean business graphics in Canva."
+    link = "#contact"
