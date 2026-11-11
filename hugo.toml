@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://crucial-keydev.github.io/va-portfolio/"
 languageCode = "en-us"
 title = "Garry Michael Sarmiento | Virtual Assistant Portfolio"
 
@@ -6,9 +6,9 @@ title = "Garry Michael Sarmiento | Virtual Assistant Portfolio"
   name = "Garry Michael Sarmiento"
   headline_prefix = "HELLO I AM"
   typing_roles = ["EXECUTIVE VA", "OPERATIONS PRO", "DATA SPECIALIST", "TECH & AI VA"]
-  subtitle = "Administrative & Operations Professional, Database Builder, Multi-Channel Coordinator, and AI Workflow Specialist"
-  cv_url = "/files/sarmiento_resume.pdf"
-  profile_image = "/images/thisphoto.jpg"
+  subtitle = "Administrative & Operations Professional, Multi-Channel Coordinator, and AI Workflow Specialist"
+  cv_url = "files/sarmiento_resume.pdf"
+  profile_image = "images/thisphoto.jpg"
   
   # Hero Floating Badges
   badge_top_title = "Google AI"
