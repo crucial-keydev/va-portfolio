@@ -61,7 +61,7 @@
         <a href="#portfolio" class="hover:text-brandRed transition">Portfolio</a>
         <a href="#contact" class="hover:text-brandRed transition">Contact</a>
       </nav>
-      <a href="{{ .Site.Params.cv_url }}" download class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-brandRed/30 flex items-center gap-2 transition">
+      <a href="{{ .Site.Params.cv_url | relURL }}" download class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-brandRed/30 flex items-center gap-2 transition">
         <i class="fa-solid fa-download"></i> Download CV
       </a>
     </div>
@@ -95,10 +95,9 @@
 
       <!-- Right Column (Portrait + Floating White Cards) -->
       <div class="lg:col-span-5 relative flex justify-center">
-        <!-- Main Portrait Container -->
         <div class="relative w-72 sm:w-80 h-96 rounded-2xl overflow-visible flex items-end justify-center">
-        <img src="{{ .Site.Params.profile_image | relURL }}" alt="{{ .Site.Params.name }}" 
-        class="w-full h-full object-cover rounded-2xl border border-white/10 shadow-2xl">
+          <img src="{{ .Site.Params.profile_image | relURL }}" alt="{{ .Site.Params.name }}" 
+               class="w-full h-full object-cover rounded-2xl border border-white/10 shadow-2xl">
           
           <!-- Top Right Floating Badge -->
           <div class="absolute -top-5 -right-4 bg-white text-gray-900 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-3">
@@ -131,21 +130,17 @@
       
       <!-- Left 2x2 Bento Grid -->
       <div class="lg:col-span-6 grid grid-cols-2 gap-5 max-w-md mx-auto w-full">
-        <!-- Top-Left Image -->
         <div class="aspect-square rounded-2xl overflow-hidden bg-brandCard border border-white/5">
           <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80" alt="Team Operations" class="w-full h-full object-cover">
         </div>
-        <!-- Top-Right Stat Card -->
         <div class="aspect-square rounded-2xl bg-brandCard border border-white/5 flex flex-col items-center justify-center p-6 text-center">
           <span class="text-4xl sm:text-5xl font-extrabold text-white">{{ .Site.Params.stat1_num }}</span>
           <span class="text-[11px] font-semibold tracking-wider text-brandRed uppercase mt-2">{{ .Site.Params.stat1_label }}</span>
         </div>
-        <!-- Bottom-Left Stat Card -->
         <div class="aspect-square rounded-2xl bg-brandCard border border-white/5 flex flex-col items-center justify-center p-6 text-center">
           <span class="text-4xl sm:text-5xl font-extrabold text-white">{{ .Site.Params.stat2_num }}</span>
           <span class="text-[11px] font-semibold tracking-wider text-brandRed uppercase mt-2">{{ .Site.Params.stat2_label }}</span>
         </div>
-        <!-- Bottom-Right Image -->
         <div class="aspect-square rounded-2xl overflow-hidden bg-brandCard border border-white/5">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Data Analytics" class="w-full h-full object-cover">
         </div>
@@ -159,7 +154,7 @@
           {{ .Site.Params.about_bio }}
         </p>
 
-        <!-- Red Dot List -->
+        <!-- Bullet List -->
         <ul class="space-y-2.5 text-sm pt-2">
           <li class="flex items-center gap-3">
             <span class="w-2 h-2 rounded-full bg-brandRed"></span>
@@ -200,7 +195,7 @@
 
         <!-- Action Buttons -->
         <div class="pt-4 flex items-center gap-3">
-          <a href="{{ .Site.Params.cv_url }}" download class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-6 py-3 rounded-full shadow-lg shadow-brandRed/30 flex items-center gap-2 transition">
+          <a href="{{ .Site.Params.cv_url | relURL }}" download class="bg-brandRed hover:bg-red-600 text-white text-xs font-semibold px-6 py-3 rounded-full shadow-lg shadow-brandRed/30 flex items-center gap-2 transition">
             <i class="fa-solid fa-download"></i> Download CV
           </a>
           <a href="#contact" class="w-10 h-10 rounded-full bg-brandRed hover:bg-red-600 text-white flex items-center justify-center shadow-lg shadow-brandRed/30 transition" title="Contact Me">
@@ -236,7 +231,6 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 pt-4">
         {{ range .Site.Params.services }}
         <div class="relative bg-brandCard border border-white/5 rounded-2xl p-8 pt-12 text-center hover:border-brandRed/40 transition group">
-          <!-- Floating White Circle Icon -->
           <div class="w-12 h-12 rounded-full bg-white text-brandRed flex items-center justify-center text-lg shadow-lg absolute -top-6 left-1/2 -translate-x-1/2 group-hover:bg-brandRed group-hover:text-white transition">
             <i class="fa-solid {{ .icon }}"></i>
           </div>
@@ -280,25 +274,50 @@
     </div>
   </section>
 
-  <!-- ================= CONTACT SECTION ================= -->
+  <!-- ================= CONTACT SECTION (DIY GOOGLE SCRIPT INTEGRATION) ================= -->
   <section id="contact" class="py-20 border-t border-white/5">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <p class="text-xs font-bold uppercase tracking-widest text-brandRed mb-2">Ready to Streamline Your Operations?</p>
       <h2 class="text-3xl font-extrabold uppercase mb-4">LET'S WORK TOGETHER</h2>
-      <p class="text-sm text-gray-300 mb-8">Send a direct message or reach out via email or WhatsApp to book an intro call.</p>
+      <p class="text-sm text-gray-300 mb-8">Send a direct message or reach out via email or WhatsApp to discuss support options.</p>
 
-      <form action="https://api.web3forms.com/submit" method="POST" class="max-w-xl mx-auto space-y-4 text-left">
-        <!-- Replace YOUR_ACCESS_KEY_HERE with a free key from https://web3forms.com -->
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+      <form id="portfolioContactForm" class="max-w-xl mx-auto space-y-4 text-left">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input type="text" name="name" placeholder="Your Name" required class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed">
-          <input type="email" name="email" placeholder="Your Email" required class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed">
+          <div>
+            <label class="block text-xs font-semibold text-gray-400 mb-1">Your Name</label>
+            <input type="text" name="name" placeholder="John Doe" required 
+                   class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed transition">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-400 mb-1">Your Email</label>
+            <input type="email" name="email" placeholder="client@company.com" required 
+                   class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed transition">
+          </div>
         </div>
-        <textarea name="message" rows="4" placeholder="How can I help your business?" required class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed"></textarea>
-        <button type="submit" class="w-full bg-brandRed hover:bg-red-600 text-white font-semibold py-3.5 rounded-full shadow-lg shadow-brandRed/30 transition text-sm">
-          Send Message
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-400 mb-1">Project Details / Message</label>
+          <textarea name="message" rows="4" placeholder="Describe the tasks or systems you need help with..." required 
+                    class="w-full bg-brandCard border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandRed transition"></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" 
+                class="w-full bg-brandRed hover:bg-red-600 text-white font-semibold py-3.5 rounded-full shadow-lg shadow-brandRed/30 transition text-sm flex items-center justify-center gap-2">
+          <i class="fa-regular fa-paper-plane"></i> <span id="btnText">Send Message</span>
         </button>
+        
+        <p id="formStatus" class="text-center text-xs mt-3 hidden font-medium"></p>
       </form>
+
+      <!-- Quick Contact Links -->
+      <div class="mt-8 flex flex-wrap justify-center items-center gap-6 text-xs text-gray-400">
+        <a href="mailto:{{ .Site.Params.email }}" class="hover:text-brandRed flex items-center gap-2 transition">
+          <i class="fa-solid fa-envelope text-brandRed"></i> {{ .Site.Params.email }}
+        </a>
+        <a href="https://wa.me/639398824470" target="_blank" rel="noopener noreferrer" class="hover:text-brandRed flex items-center gap-2 transition">
+          <i class="fa-brands fa-whatsapp text-green-500"></i> {{ .Site.Params.phone }}
+        </a>
+      </div>
     </div>
   </section>
 
@@ -306,8 +325,9 @@
     © {{ now.Year }} {{ .Site.Params.name }}. Built with Hugo.
   </footer>
 
-  <!-- Typewriter Script for Hero Role Animation -->
+  <!-- Scripts: Typewriter & Google Apps Script Fetch -->
   <script>
+    // 1. Hero Role Typewriter Animation
     const roles = {{ .Site.Params.typing_roles | jsonify | safeJS }};
     let roleIndex = 0;
     let charIndex = 0;
@@ -331,6 +351,48 @@
       }
     }
     document.addEventListener('DOMContentLoaded', typeLoop);
+
+    // 2. Google Apps Script Form Submission Handler
+    // REPLACE WITH YOUR COPIED GOOGLE APPS SCRIPT WEB APP URL (ENDS IN /exec):
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxmhTbanJMpq6GcQDNE1ffFNB-mru0PpM9tsdmeMg60hYmn3GKpqByAAlmIqzHVF3FG/exec";
+    
+    const form = document.getElementById('portfolioContactForm');
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const statusMsg = document.getElementById('formStatus');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+      statusMsg.classList.add('hidden');
+
+      fetch(scriptURL, { 
+        method: 'POST', 
+        body: new FormData(form),
+        mode: 'no-cors'
+      })
+      .then(() => {
+        btnText.textContent = 'Message Sent!';
+        btn.classList.remove('bg-brandRed');
+        btn.classList.add('bg-green-600');
+        statusMsg.textContent = 'Thank you! Your message has been logged and sent to Garry.';
+        statusMsg.className = 'text-center text-xs mt-3 text-green-400 font-medium block';
+        form.reset();
+        setTimeout(() => {
+          btn.disabled = false;
+          btnText.textContent = 'Send Message';
+          btn.classList.remove('bg-green-600');
+          btn.classList.add('bg-brandRed');
+        }, 5000);
+      })
+      .catch(error => {
+        btn.disabled = false;
+        btnText.textContent = 'Send Message';
+        statusMsg.textContent = 'Something went wrong. Please reach out directly via email or WhatsApp.';
+        statusMsg.className = 'text-center text-xs mt-3 text-red-400 font-medium block';
+      });
+    });
   </script>
 </body>
 </html>
